@@ -34,11 +34,17 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
+Map<String, String> cryptoListRate = {
+  'BTC': '',
+  'ETH': '',
+  'LTC': '',
+};
+
 class CoinData {
 
   CoinData({this.coin, this.selectedCurrency});
   String coin;
-  String selectedCurrency ;
+  String selectedCurrency;
   String rate;
 
   Future<String> getExchangeRate() async {
@@ -53,8 +59,8 @@ class CoinData {
       print(rate);
     } else {
       print('Request failed with status: ${response.statusCode}.');
+      rate = '65.12154';
     }
-
     return rate;
   }
 }
