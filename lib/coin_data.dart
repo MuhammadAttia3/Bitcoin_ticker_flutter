@@ -59,7 +59,6 @@ class CoinData {
       print(rate);
     } else {
       print('Request failed with status: ${response.statusCode}.');
-      rate = '65.12154';
     }
     return rate;
   }
