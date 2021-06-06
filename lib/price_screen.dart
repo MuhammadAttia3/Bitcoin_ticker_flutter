@@ -95,45 +95,11 @@ class _PriceScreenState extends State<PriceScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CurrencyCard(btcCoin: btcCoin, selectedCurrency: selectedCurrency),
+                CurrencyCard(coin: btcCoin, selectedCurrency: selectedCurrency),
                 SizedBox(height: 20.0,),
-                Card(
-                  color: Colors.lightBlueAccent,
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                    child: Text (
-                      '1 $ethCoin = ${cryptoListRate['$ethCoin']} $selectedCurrency',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                CurrencyCard(coin: ethCoin, selectedCurrency: selectedCurrency),
                 SizedBox(height: 20.0,),
-                Card(
-                  color: Colors.lightBlueAccent,
-                  elevation: 5.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                    child: Text (
-                      '1 $ltcCoin = ${cryptoListRate['$ltcCoin']} $selectedCurrency',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                CurrencyCard(coin: ltcCoin, selectedCurrency: selectedCurrency),
               ],
             ),
           ),
@@ -151,13 +117,12 @@ class _PriceScreenState extends State<PriceScreen> {
 }
 
 class CurrencyCard extends StatelessWidget {
-  const CurrencyCard({
-    Key key,
-    @required this.btcCoin,
+  CurrencyCard({
+    @required this.coin,
     @required this.selectedCurrency,
-  }) : super(key: key);
+  });
 
-  final String btcCoin;
+  final String coin;
   final String selectedCurrency;
 
   @override
@@ -171,7 +136,7 @@ class CurrencyCard extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
         child: Text (
-          '1 $btcCoin = ${cryptoListRate['$btcCoin']} $selectedCurrency',
+          '1 $coin = ${cryptoListRate['$coin']} $selectedCurrency',
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20.0,
